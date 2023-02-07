@@ -1,25 +1,28 @@
 import { useState } from 'react';
-import styles from './Select.module.css';
+import styles from './MultiSelect.module.css';
 
 export type TselectOption = {
   label: string;
   value: string | number;
 };
 
-const Select: React.FC<{
-  value?: TselectOption;
-  onChange: (value: TselectOption | undefined) => void;
+const MultiSelect: React.FC<{
+  value: TselectOption[];
+  onChange: (value: TselectOption[]) => void;
   options: TselectOption[];
-  multi?: boolean;
 }> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const clearoptions = () => {
-    props.onChange(undefined);
+    props.onChange([]);
   };
 
   const selectOption = (option: TselectOption) => {
-    if (option !== props.value) props.onChange(option);
+    if (props.value.includes(option)) {
+      props.onChange(props.value.filter((o) => o !== option));
+    } else {
+      props.onChange([...props.value, option]);
+    }
   };
 
   return (
@@ -30,7 +33,24 @@ const Select: React.FC<{
         tabIndex={0}
         className={styles.parent}
       >
-        <span className={styles.value}>{props.value?.label}</span>
+        <span className={styles.value}>
+          {props.value.map((item) => {
+            return (
+              <button
+                className={styles.optionBage}
+                key={item.value}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  selectOption(item);
+                }}
+              >
+                {item.label}
+                <span className={styles.removeBtn}>&times;</span>
+              </button>
+            );
+          })}
+        </span>
+
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -51,7 +71,7 @@ const Select: React.FC<{
                 setIsOpen(false);
               }}
               className={`${styles.option} ${
-                option === props.value ? styles.selected : ''
+                props.value.includes(option) ? styles.selected : ''
               }`}
               key={option.value}
               value={option.value}
@@ -65,4 +85,4 @@ const Select: React.FC<{
   );
 };
 
-export default Select;
+export default MultiSelect;

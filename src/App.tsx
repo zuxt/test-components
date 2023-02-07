@@ -1,11 +1,9 @@
 import Select from './components/Select/Select';
+import MultiSelect from './components/MultiSelect/MultiSelect';
 
 import { useState } from 'react';
 
-type TselectOption = {
-  label: string;
-  value: string | number;
-};
+import { TselectOption } from './components/Select/Select';
 
 const options: TselectOption[] = [
   { label: 'option 1', value: 1 },
@@ -18,10 +16,19 @@ const options: TselectOption[] = [
 ];
 
 function App() {
-  const [value, setValue] = useState<typeof options[0] | undefined>(options[0]);
+  const [value, setValue] = useState<TselectOption | undefined>(options[0]);
+  const [multiVal, setMultiVal] = useState<TselectOption[]>([options[0]]);
   return (
     <>
       <Select options={options} value={value} onChange={(o) => setValue(o)} />
+
+      <br />
+
+      <MultiSelect
+        options={options}
+        value={multiVal}
+        onChange={(o) => setMultiVal(o)}
+      />
     </>
   );
 }
