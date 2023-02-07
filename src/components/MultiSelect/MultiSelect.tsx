@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './MultiSelect.module.css';
 
 export type TselectOption = {
@@ -12,10 +12,54 @@ const MultiSelect: React.FC<{
   options: TselectOption[];
 }> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const clearoptions = () => {
     props.onChange([]);
   };
+
+  useEffect(() => {
+    if (isOpen) setHighlightedIndex(0);
+  }, [isOpen]);
+
+  useEffect(() => {
+    const eventsHandler = (e: KeyboardEvent) => {
+      if (e.target !== containerRef.current) {
+        return;
+      }
+
+      switch (e.code) {
+        case 'Enter':
+        case 'Space':
+          setIsOpen((prev) => !prev);
+          if (isOpen) selectOption(props.options[highlightedIndex]);
+          break;
+        case 'ArrowUp':
+          const newHIup = highlightedIndex - 1;
+          if (newHIup >= 0) setHighlightedIndex(newHIup);
+          break;
+        case 'ArrowDown':
+          if (!isOpen) {
+            setIsOpen(true);
+          }
+
+          const newHIdw = highlightedIndex + 1;
+
+          if (newHIdw < props.options.length) setHighlightedIndex(newHIdw);
+
+          break;
+        default:
+          break;
+      }
+    };
+
+    containerRef.current?.addEventListener('keydown', eventsHandler);
+
+    return () => {
+      containerRef.current?.removeEventListener('keydown', eventsHandler);
+    };
+  }, [isOpen, highlightedIndex, props.options]);
 
   const selectOption = (option: TselectOption) => {
     if (props.value.includes(option)) {
@@ -28,6 +72,7 @@ const MultiSelect: React.FC<{
   return (
     <>
       <div
+        ref={containerRef}
         onBlur={() => setIsOpen(false)}
         onClick={(e) => setIsOpen((prev) => !prev)}
         tabIndex={0}
@@ -63,7 +108,7 @@ const MultiSelect: React.FC<{
         <div className={styles.divider}></div>
         <div className={styles.caret}></div>
         <ul className={`${styles.options} ${isOpen ? styles.show : ''}`}>
-          {props.options.map((option: TselectOption) => (
+          {props.options.map((option: TselectOption, index) => (
             <li
               onClick={(e) => {
                 e.stopPropagation();
@@ -72,7 +117,8 @@ const MultiSelect: React.FC<{
               }}
               className={`${styles.option} ${
                 props.value.includes(option) ? styles.selected : ''
-              }`}
+              }
+              ${highlightedIndex === index ? styles.highlighted : ''}`}
               key={option.value}
               value={option.value}
             >
@@ -86,3 +132,6 @@ const MultiSelect: React.FC<{
 };
 
 export default MultiSelect;
+function usaRef() {
+  throw new Error('Function not implemented.');
+}
