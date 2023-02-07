@@ -49,6 +49,9 @@ const MultiSelect: React.FC<{
           if (newHIdw < props.options.length) setHighlightedIndex(newHIdw);
 
           break;
+        case 'Escape':
+          setIsOpen(false);
+          break;
         default:
           break;
       }
