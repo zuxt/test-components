@@ -1,0 +1,125 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 3%, 37%);
+}
+
+.card {
+  padding: 0.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+  background-color: rgb(49, 46, 46);
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 0.75rem;
+  height: 20rem;
+}
+
+.image:hover {
+  transform: scale(1.05);
+  transition-duration: 200ms;
+}
+
+.contentContainer {
+  padding: 0.5rem;
+}
+
+.contentTitle {
+  margin-bottom: 1rem;
+  font-family: sans-serif;
+  font-size: medium;
+  text-align: center;
+  color: white;
+}
+
+.content {
+  max-width: 20rem;
+  margin: 1rem 0;
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
+  text-align: center;
+  color: white;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  color: white;
+  background: rgb(49, 46, 46);
+  border: 1px solid rgb(60, 60, 63);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.btn {
+  padding: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(39 39 42);
+  color: rgb(39 39 42);
+  background-color: rgb(63 98 18);
+}
+
+.btn:hover {
+  background-color: rgb(77 124 15);
+  color: white;
+  transition-duration: 500ms;
+}
+
+@media screen and (min-width: 768px) {
+  .cardContainer {
+    flex-direction: row;
+  }
+
+  .image {
+    height: 16rem;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .contentContainer {
+    padding: 1rem;
+  }
+
+  .contentTitle {
+    text-align: left;
+  }
+
+  .content {
+    text-align: left;
+  }
+
+  .inputContainer {
+    flex-direction: row;
+    margin-bottom: 0;
+    margin-left: 0.75rem;
+  }
+}

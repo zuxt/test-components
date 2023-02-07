@@ -1,6 +1,8 @@
 import Select from './components/Select/Select';
 import MultiSelect from './components/MultiSelect/MultiSelect';
 
+import EmailSubscribe from './components/EmailSubscribe/EmailSubscribe';
+
 import { useState } from 'react';
 
 import { TselectOption } from './components/Select/Select';
@@ -29,6 +31,10 @@ function App() {
         value={multiVal}
         onChange={(o) => setMultiVal(o)}
       />
+
+      <br />
+
+      <EmailSubscribe />
     </>
   );
 }
