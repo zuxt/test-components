@@ -1,3 +1,5 @@
+import './App.css';
+
 import Select from './components/Select/Select';
 import MultiSelect from './components/MultiSelect/MultiSelect';
 
@@ -20,6 +22,11 @@ const options: TselectOption[] = [
 function App() {
   const [value, setValue] = useState<TselectOption | undefined>(options[0]);
   const [multiVal, setMultiVal] = useState<TselectOption[]>([options[0]]);
+
+  const emailSubscribeHandler = (email: string) => {
+    console.log(email);
+  };
+
   return (
     <>
       <Select options={options} value={value} onChange={(o) => setValue(o)} />
@@ -33,8 +40,9 @@ function App() {
       />
 
       <br />
-
-      <EmailSubscribe />
+      <div className='emailSubscribe-container'>
+        <EmailSubscribe callbackFn={emailSubscribeHandler} />
+      </div>
     </>
   );
 }

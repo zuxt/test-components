@@ -72,6 +72,11 @@
   border: 1px solid rgb(60, 60, 63);
 }
 
+.inputBAD {
+  background: rgb(204, 107, 107);
+  border: 1px solid rgb(233, 15, 15);
+}
+
 .input:focus {
   outline: none;
 }
