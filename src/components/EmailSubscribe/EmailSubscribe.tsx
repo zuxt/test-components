@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './EmailSubscribe.module.css';
 
-import image from '../../assets/images/image.jpg';
+import image from '../../assets/images/image_email.jpg';
 
 const EmailSubscribe: React.FC<{
   callbackFn: (email: string) => void;

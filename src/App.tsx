@@ -2,11 +2,10 @@ import './App.css';
 
 import Select from './components/Select/Select';
 import MultiSelect from './components/MultiSelect/MultiSelect';
-
 import EmailSubscribe from './components/EmailSubscribe/EmailSubscribe';
+import ProductModal from './components/ProductModal/ProductModal';
 
 import { useState } from 'react';
-
 import { TselectOption } from './components/Select/Select';
 
 const options: TselectOption[] = [
@@ -30,7 +29,7 @@ function App() {
   return (
     <>
       <Select options={options} value={value} onChange={(o) => setValue(o)} />
-
+      
       <br />
 
       <MultiSelect
@@ -42,6 +41,11 @@ function App() {
       <br />
       <div className='emailSubscribe-container'>
         <EmailSubscribe callbackFn={emailSubscribeHandler} />
+      </div>
+      <br />
+
+      <div className='productModal-container'>
+        <ProductModal />
       </div>
     </>
   );
