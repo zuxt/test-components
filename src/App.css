@@ -1,11 +1,11 @@
 .emailSubscribe-container {
   width: 100%;
   position: relative;
-  height: 50rem;
+  min-height:35rem;
 }
 
 .productModal-container{
   width: 100%;
   position: relative;
-  height: 50rem;
+
 }
