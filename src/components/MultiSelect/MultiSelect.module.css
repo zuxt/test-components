@@ -70,6 +70,7 @@
   top: calc(100% + 0.25em);
   position: absolute;
   z-index: 100;
+  background-color: white;
 }
 
 .options.show {

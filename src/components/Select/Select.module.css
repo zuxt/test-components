@@ -61,6 +61,7 @@
   max-height: 15em;
   overflow-y: auto;
   border: #777 solid 0.05em;
+  background-color: white;
   border-radius: 0.25em;
   width: 100%;
   left: 0;
