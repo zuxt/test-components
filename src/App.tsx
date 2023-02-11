@@ -6,6 +6,7 @@ import Select from './components/Select/Select';
 import MultiSelect from './components/MultiSelect/MultiSelect';
 import EmailSubscribe from './components/EmailSubscribe/EmailSubscribe';
 import ProductModal from './components/ProductModal/ProductModal';
+import ImageGallery from './components/ImageGallery/ImageGallery';
 
 import { useState } from 'react';
 import { TselectOption } from './components/Select/Select';
@@ -73,6 +74,12 @@ function App() {
 					compareFnc={productModalHandler}
 					saveFnc={productModalHandler}
 				/>
+			</div>
+
+			<br />
+
+			<div className='imageGallery-container'>
+				<ImageGallery />
 			</div>
 		</>
 	);

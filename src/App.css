@@ -1,11 +1,16 @@
+/** @format */
+
 .emailSubscribe-container {
-  width: 100%;
-  position: relative;
-  min-height:35rem;
+	width: 100%;
+	position: relative;
+	min-height: 35rem;
 }
 
-.productModal-container{
-  width: 100%;
-  position: relative;
+.productModal-container {
+	width: 100%;
+	position: relative;
+}
 
+.imageGallery-container {
+	width: 100%;
 }
