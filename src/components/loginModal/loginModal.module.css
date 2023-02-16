@@ -1,0 +1,175 @@
+/** @format */
+
+.globalContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-color: rgb(255 241 242);
+}
+
+.cardContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin: 1.5rem;
+	margin-top: 3.5rem;
+	background-color: white;
+	box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	border-radius: 1rem;
+}
+
+.leftSide {
+	padding: 3.5rem;
+}
+
+.rightSide {
+	width: 330px;
+	display: none;
+}
+
+.topContentTitle {
+	margin-bottom: 1.25rem;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	font-weight: bold;
+}
+
+.topContentText {
+	margin-bottom: 3rem;
+	font-weight: 100;
+	color: grey;
+	max-width: 24rem;
+}
+
+.input {
+	width: 100%;
+	padding: 1rem;
+	border: lightgray solid 1px;
+	border-radius: 0.25rem;
+}
+
+.middleContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1.5rem 0;
+}
+
+.forgotPassword {
+	font-weight: 100;
+	color: rgb(40, 80, 141);
+	margin-bottom: 1rem;
+}
+
+.button {
+	width: 100%;
+	display: flex;
+	background: none;
+	align-items: center;
+	justify-content: center;
+	margin: 3rem 0;
+	font-weight: bold;
+	color: white;
+	border: 1px solid rgb(40, 80, 141);
+	border-radius: 0.25rem;
+	padding: 1.25rem 0;
+	background-color: rgb(40, 80, 141);
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.button span {
+	margin-right: 0.75rem;
+}
+
+.button:hover {
+	opacity: 90%;
+	transform: translateY(1px);
+	transition-duration: 200ms;
+}
+
+.border {
+	margin-top: 3px;
+	border-bottom: 1px solid lightgray;
+}
+
+.bottomContent {
+	padding: 1.5rem 0;
+	font-size: small;
+	font-weight: 100;
+	color: gray;
+}
+
+.bottomButtons {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0.5rem 0;
+	/* justify-content: space-around; */
+}
+
+.socialBtn {
+	background: none;
+	border: 1px solid lightgray;
+	border-radius: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0.25rem 0;
+	padding: 0.5rem 0;
+}
+
+.socialBtn:hover {
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	opacity: 90%;
+	transform: translateY(1px);
+	transition-duration: 200ms;
+}
+
+.socialImg {
+	width: 2.25rem;
+}
+
+.colseBtn {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 32px;
+	color: gray;
+}
+
+.colseBtn:hover {
+	opacity: 90%;
+	transform: translateY(1px);
+	transition-duration: 200ms;
+}
+
+@media screen and (min-width: 768px) {
+	.cardContainer {
+		flex-direction: row;
+		margin: 0;
+	}
+
+	.leftSide {
+		padding: 3rem;
+	}
+
+	.rightSide {
+		display: block;
+	}
+
+	.middleContent {
+		flex-direction: row;
+		margin: 0;
+	}
+
+	.button {
+		width: 60%;
+	}
+
+	.colseBtn {
+		color: white;
+	}
+}

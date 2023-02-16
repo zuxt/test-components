@@ -7,6 +7,7 @@ import MultiSelect from './components/MultiSelect/MultiSelect';
 import EmailSubscribe from './components/EmailSubscribe/EmailSubscribe';
 import ProductModal from './components/ProductModal/ProductModal';
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import LoginModal from './components/loginModal/loginModal';
 
 import { useState } from 'react';
 import { TselectOption } from './components/Select/Select';
@@ -119,6 +120,11 @@ function App() {
 
 	return (
 		<>
+			<p>
+				Just a collection of custom components for testing and possibly use in
+				future projects
+			</p>
+			<br />
 			<Select
 				options={options}
 				value={value}
@@ -156,6 +162,8 @@ function App() {
 					uploadCallbackFnc={imageGalleryHandler}
 				/>
 			</div>
+
+			<LoginModal />
 		</>
 	);
 }
