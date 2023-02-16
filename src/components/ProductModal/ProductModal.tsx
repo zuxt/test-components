@@ -3,11 +3,11 @@
 import React from 'react';
 import styles from './ProductModal.module.css';
 
-import image from '../../assets/images/headphone.png';
-import weight from '../../assets/images/weight.png';
-import heart from '../../assets/images/heart.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faScaleUnbalanced, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export type TproductData = {
+	image: string;
 	name: string;
 	title: string;
 	isFreeShipping: boolean;
@@ -30,8 +30,8 @@ const ProductModal: React.FC<{
 					<div className={styles.imageContainer}>
 						<img
 							className={styles.image}
-							src={image}
-							alt={image}
+							src={props.productData.image}
+							alt={props.productData.image}
 						/>
 					</div>
 					<div className={styles.contentContainer}>
@@ -70,22 +70,14 @@ const ProductModal: React.FC<{
 									className={styles.compareBtn}
 									onClick={() => props.compareFnc(props.productData.name)}
 								>
-									<img
-										className={styles.btnImg}
-										src={weight}
-										alt={weight}
-									/>
+									<FontAwesomeIcon icon={faScaleUnbalanced} />
 									<span>Compare</span>
 								</button>
 								<button
 									className={styles.bookmarkBtn}
 									onClick={() => props.saveFnc(props.productData.name)}
 								>
-									<img
-										className={styles.btnImg}
-										src={heart}
-										alt={heart}
-									/>
+									<FontAwesomeIcon icon={faHeart} />
 									<span>Save</span>
 								</button>
 							</div>

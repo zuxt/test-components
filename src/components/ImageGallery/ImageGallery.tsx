@@ -1,13 +1,24 @@
 /** @format */
 
 import styles from './ImageGallery.module.css';
-
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
-import image1 from '../../assets/images/image1.jpg';
-import imageicon from '../../assets/images/bookmark.svg';
+export type Timages = {
+	name: string;
+	type: 'vector' | 'ilustration' | 'image' | 'icon';
+	title: string;
+	image: string;
+	likes: number;
+	dislikes: number;
+	isBookmarked: boolean;
+};
 
-const ImageGallery: React.FC = (props) => {
+const ImageGallery: React.FC<{
+	images: Timages[];
+	uploadCallbackFnc: (path: string) => void;
+}> = (props) => {
 	return (
 		<>
 			<div className={styles.globalContainer}>
@@ -105,125 +116,38 @@ const ImageGallery: React.FC = (props) => {
 					</div>
 
 					<div className={styles.galleryContainer}>
-						<div className={styles.imageContainer}>
-							<img
-								src={image1}
-								alt={image1}
-								className={styles.image}
-							/>
-							<div className={styles.imageInfoContainer}>
-								<div className={styles.imageInfogroup}>
-									<div className={styles.imageInfo}>
-										<p className={styles.imageInfoTitle}>Abstract painting</p>
-										<p className={styles.imageInfoLikes}>
-											234 likes - 23 shares
-										</p>
-									</div>
-									<div className={styles.imageInfoIcon}>
-										<img
-											src={imageicon}
-											alt={imageicon}
-										/>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.imageContainer}>
-							<img
-								src={image1}
-								alt={image1}
-								className={styles.image}
-							/>
-							<div className={styles.imageInfoContainer}>
-								<div className={styles.imageInfogroup}>
-									<div className={styles.imageInfo}>
-										<p className={styles.imageInfoTitle}>Abstract painting</p>
-										<p className={styles.imageInfoLikes}>
-											234 likes - 23 shares
-										</p>
-									</div>
-									<div className={styles.imageInfoIcon}>
-										<img
-											src={imageicon}
-											alt={imageicon}
-										/>
+						{props.images.map((image) => {
+							return (
+								<div
+									key={image.name}
+									className={styles.imageContainer}
+								>
+									<img
+										src={image.image}
+										alt={image.image}
+										className={styles.image}
+									/>
+									<div className={styles.imageInfoContainer}>
+										<div className={styles.imageInfogroup}>
+											<div className={styles.imageInfo}>
+												<p className={styles.imageInfoTitle}>{image.title}</p>
+												<p className={styles.imageInfoLikes}>
+													{`${image.likes} likes - ${image.dislikes} dislikes`}
+												</p>
+											</div>
+											<div className={styles.imageInfoIcon}>
+												<FontAwesomeIcon
+													icon={faBookmark}
+													className={
+														image.isBookmarked ? styles.imageBookmarked : ''
+													}
+												/>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-
-						<div className={styles.imageContainer}>
-							<img
-								src={image1}
-								alt={image1}
-								className={styles.image}
-							/>
-							<div className={styles.imageInfoContainer}>
-								<div className={styles.imageInfogroup}>
-									<div className={styles.imageInfo}>
-										<p className={styles.imageInfoTitle}>Abstract painting</p>
-										<p className={styles.imageInfoLikes}>
-											234 likes - 23 shares
-										</p>
-									</div>
-									<div className={styles.imageInfoIcon}>
-										<img
-											src={imageicon}
-											alt={imageicon}
-										/>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.imageContainer}>
-							<img
-								src={image1}
-								alt={image1}
-								className={styles.image}
-							/>
-							<div className={styles.imageInfoContainer}>
-								<div className={styles.imageInfogroup}>
-									<div className={styles.imageInfo}>
-										<p className={styles.imageInfoTitle}>Abstract painting</p>
-										<p className={styles.imageInfoLikes}>
-											234 likes - 23 shares
-										</p>
-									</div>
-									<div className={styles.imageInfoIcon}>
-										<img
-											src={imageicon}
-											alt={imageicon}
-										/>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.imageContainer}>
-							<img
-								src={image1}
-								alt={image1}
-								className={styles.image}
-							/>
-							<div className={styles.imageInfoContainer}>
-								<div className={styles.imageInfogroup}>
-									<div className={styles.imageInfo}>
-										<p className={styles.imageInfoTitle}>Abstract painting</p>
-										<p className={styles.imageInfoLikes}>
-											234 likes - 23 shares
-										</p>
-									</div>
-									<div className={styles.imageInfoIcon}>
-										<img
-											src={imageicon}
-											alt={imageicon}
-										/>
-									</div>
-								</div>
-							</div>
-						</div>
+							);
+						})}
 					</div>
 				</div>
 			</div>

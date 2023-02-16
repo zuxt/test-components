@@ -164,6 +164,10 @@
 	align-items: center;
 }
 
+.imageBookmarked {
+	color: red;
+}
+
 @media screen and (min-width: 768px) {
 	.cardContainer {
 		/* padding: 10rem; */
